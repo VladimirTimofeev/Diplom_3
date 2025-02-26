@@ -11,26 +11,34 @@ public class Registration {
 
     //Ссылка Зарегистрироваться
     private final By linkRegistration = By.xpath(".//a[text()='Зарегистрироваться']");
+    //Ссылка Войти
+    private final By linkEnter = By.xpath(".//a[text()='Войти']");
     //Поле для ввода имени
     private final By nameField = By.xpath("(.//input[@name='name'])[1]");
-    //Поле для ввода email
-    private final By emailField = By.xpath("(.//input[@name='name'])[2]");
+    //Поле для ввода email при регистрации
+    private final By emailRegistrationField = By.xpath("(.//input[@name='name'])[2]");
+    //Поле для ввода email при регистрации
+    private final By emailEnterField = By.xpath(".//input[@name='name']");
     //Поле для ввода пароля
     private final By passswordField = By.xpath(".//input[@name='Пароль']");
     //Кнопка Зарегистрироваться
     private final By buttonRegistration = By.xpath("//button[text()='Зарегистрироваться']");
     //Ошибка некорректного пароля
     private final By errorPassword = By.xpath(".//p[text()='Некорректный пароль']");
+    //Кнопка войти
+    private final By buttonEnter = By.xpath(".//button[text()='Войти']");
 
     public Registration(WebDriver driver) {
         this.driver = driver;
     }
 
+    //Ожидание кликабельности элемента на странице
     public void waitElementClicable(By element) {
         new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.elementToBeClickable(element));
     }
 
+    //Ожидание появение элемента на странице
     public void waitElementLocated(By element) {
         new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(element));
@@ -50,10 +58,17 @@ public class Registration {
     }
 
     //Введение email в поле
+    public void enterRegistrationFieldEmail(User user) {
+        waitElementLocated(emailRegistrationField);
+        driver.findElement(emailRegistrationField).click();
+        driver.findElement(emailRegistrationField).sendKeys(user.getEmail());
+    }
+
+    //Введение email в поле
     public void enterFieldEmail(User user) {
-        waitElementLocated(emailField);
-        driver.findElement(emailField).click();
-        driver.findElement(emailField).sendKeys(user.getEmail());
+        waitElementLocated(emailEnterField);
+        driver.findElement(emailEnterField).click();
+        driver.findElement(emailEnterField).sendKeys(user.getEmail());
     }
 
     //Введение пароля в поле
@@ -74,5 +89,17 @@ public class Registration {
         waitElementLocated(errorPassword);
         String actualText = driver.findElement(errorPassword).getText();
         return actualText;
+    }
+
+    //Нажатие кнопки Войти
+    public void clickButtonEnter() {
+        waitElementLocated(buttonEnter);
+        driver.findElement(buttonEnter).click();
+    }
+
+    //Нажатие на кнопку Вход на странице регистрации
+    public void ckickButtonEnterFromRegistrationPage() {
+        waitElementClicable(linkEnter);
+        driver.findElement(linkEnter).click();
     }
 }

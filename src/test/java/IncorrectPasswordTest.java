@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import static org.junit.Assert.assertEquals;
 
-public class IncorrectPassword {
+public class IncorrectPasswordTest {
 
     private WebDriver driver;
     private String actualErros;
@@ -28,7 +28,7 @@ public class IncorrectPassword {
         Registration registration = new Registration(driver);
         registration.clickLinkRegistration();
         registration.enterFieldName(user);
-        registration.enterFieldEmail(user);
+        registration.enterRegistrationFieldEmail(user);
         registration.enterPassword(user);
         registration.clickButtonRegistration();
         actualErros = registration.chechTextErrorPassword();

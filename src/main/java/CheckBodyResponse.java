@@ -15,4 +15,14 @@ public class CheckBodyResponse {
         response.then().assertThat()
                 .body("message", equalTo("User successfully removed"));
     }
+
+    public void checkBodyUserEmail(Response response, User user) {
+        response.then().assertThat()
+                .body("user.email", equalTo(user.getEmail()));
+    }
+
+    public void checkBoduUserName(Response response, User user) {
+        response.then().assertThat()
+                .body("user.name", equalTo(user.getName()));
+    }
 }

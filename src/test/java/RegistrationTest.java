@@ -54,7 +54,7 @@ public class RegistrationTest {
         Registration registration = new Registration(driver);
         registration.clickLinkRegistration();
         registration.enterFieldName(user);
-        registration.enterFieldEmail(user);
+        registration.enterRegistrationFieldEmail(user);
         registration.enterPassword(user);
         registration.clickButtonRegistration();
     }
