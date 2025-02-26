@@ -9,6 +9,8 @@ public class Registration {
 
     private final WebDriver driver;
 
+    private String actualText;
+
     //Ссылка Зарегистрироваться
     private final By linkRegistration = By.xpath(".//a[text()='Зарегистрироваться']");
     //Ссылка Войти
@@ -27,6 +29,10 @@ public class Registration {
     private final By errorPassword = By.xpath(".//p[text()='Некорректный пароль']");
     //Кнопка войти
     private final By buttonEnter = By.xpath(".//button[text()='Войти']");
+    //Надпись Вход
+    private final By heading = By.xpath("//*[@id=\"root\"]/div/main/div/h2");
+    //Ссылка Восстановить пароль
+    private final By linkRecoverThePassword = By.xpath(".//a[text()='Восстановить пароль']");
 
     public Registration(WebDriver driver) {
         this.driver = driver;
@@ -79,9 +85,11 @@ public class Registration {
     }
 
     //Нажате на кнопку Зарегистрироваться
-    public void clickButtonRegistration() {
+    public String clickButtonRegistration() {
         waitElementLocated(buttonRegistration);
+        String actualText = driver.findElement(buttonRegistration).getText();
         driver.findElement(buttonRegistration).click();
+        return actualText;
     }
 
     //Проверка текста ошибки некорректного пароля
@@ -92,14 +100,32 @@ public class Registration {
     }
 
     //Нажатие кнопки Войти
-    public void clickButtonEnter() {
+    public String clickButtonEnter() {
         waitElementLocated(buttonEnter);
+        actualText = driver.findElement(buttonEnter).getText();
         driver.findElement(buttonEnter).click();
+        return actualText;
     }
 
     //Нажатие на кнопку Вход на странице регистрации
-    public void ckickButtonEnterFromRegistrationPage() {
+    public String ckickButtonEnterFromRegistrationPage() {
         waitElementClicable(linkEnter);
+        actualText = driver.findElement(linkEnter).getText();
         driver.findElement(linkEnter).click();
+        return actualText;
+    }
+
+    //Получение текста заголовка Вход
+    public String checkHeaderText() {
+        waitElementLocated(heading);
+        return driver.findElement(heading).getText();
+    }
+
+    //Проверка и нажатие ссылки Восстановление пароля
+    public String clickAndCheckLinkRecoverThePassword() {
+        waitElementLocated(linkRecoverThePassword);
+        String actualText = driver.findElement(linkRecoverThePassword).getText();
+        driver.findElement(linkRecoverThePassword).click();
+        return actualText;
     }
 }

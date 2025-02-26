@@ -5,18 +5,20 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import static org.junit.Assert.assertEquals;
 
 
 public class RegistrationTest {
 
     private WebDriver driver;
 
-    PostApi postApi = new PostApi();
-    DeleteApi deleteApi = new DeleteApi();
-    ExtractionToken extractionToken = new ExtractionToken();
-    CheckStatusCode checkStatusCode = new CheckStatusCode();
-    CheckBodyResponse checkBodyResponse = new CheckBodyResponse();
-    String accessToken;
+    private PostApi postApi = new PostApi();
+    private DeleteApi deleteApi = new DeleteApi();
+    private ExtractionToken extractionToken = new ExtractionToken();
+    private CheckStatusCode checkStatusCode = new CheckStatusCode();
+    private CheckBodyResponse checkBodyResponse = new CheckBodyResponse();
+    private String accessToken;
+    private String actualText;
 
     User user = UserData.expectedCreateUser();
 
@@ -50,13 +52,19 @@ public class RegistrationTest {
     @Test
     public void registration() {
         BasePageObject basePageObject = new BasePageObject(driver);
-        basePageObject.ckickLoginButton();
+        actualText = basePageObject.checkTextButtonEnterInAccaunt();
+        assertEquals("Войти в аккаунт", actualText);
+        actualText = basePageObject.ckickLoginButton();
+        assertEquals("Личный Кабинет", actualText);
         Registration registration = new Registration(driver);
+        actualText = registration.checkHeaderText();
+        assertEquals("Вход", actualText);
         registration.clickLinkRegistration();
         registration.enterFieldName(user);
         registration.enterRegistrationFieldEmail(user);
         registration.enterPassword(user);
-        registration.clickButtonRegistration();
+        actualText = registration.clickButtonRegistration();
+        assertEquals("Зарегистрироваться", actualText);
     }
 
     @After

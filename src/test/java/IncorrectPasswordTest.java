@@ -10,6 +10,7 @@ public class IncorrectPasswordTest {
 
     private WebDriver driver;
     private String actualErros;
+    private String actualText;
 
     User user = UserData.expectedUserWithoutIncorrectPassword();
 
@@ -24,13 +25,19 @@ public class IncorrectPasswordTest {
     @DisplayName("Проверка текста ошибки некорректного пароля")
     public void checkErrorPasswordText() {
         BasePageObject basePageObject = new BasePageObject(driver);
-        basePageObject.ckickLoginButton();
+        actualText = basePageObject.checkTextButtonEnterInAccaunt();
+        assertEquals("Войти в аккаунт", actualText);
+        actualText = basePageObject.ckickLoginButton();
+        assertEquals("Личный Кабинет", actualText);
         Registration registration = new Registration(driver);
+        actualText = registration.checkHeaderText();
+        assertEquals("Вход", actualText);
         registration.clickLinkRegistration();
         registration.enterFieldName(user);
         registration.enterRegistrationFieldEmail(user);
         registration.enterPassword(user);
-        registration.clickButtonRegistration();
+        actualText = registration.clickButtonRegistration();
+        assertEquals("Зарегистрироваться", actualText);
         actualErros = registration.chechTextErrorPassword();
         assertEquals("Некорректный пароль", actualErros);
     }

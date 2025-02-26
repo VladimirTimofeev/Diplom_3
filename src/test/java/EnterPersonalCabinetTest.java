@@ -56,11 +56,16 @@ public class EnterPersonalCabinetTest {
     @DisplayName("Вход по кнопке на главной странице")
     public void enterInPersonCabinetFromBasePage() {
         BasePageObject basePageObject = new BasePageObject(driver);
+        actualText = basePageObject.checkTextButtonEnterInAccaunt();
+        assertEquals("Войти в аккаунт", actualText);
         basePageObject.ckickButtonPersonalCabinet();
         Registration registration = new Registration(driver);
+        actualText = registration.checkHeaderText();
+        assertEquals("Вход", actualText);
         registration.enterFieldEmail(user);
         registration.enterPassword(user);
-        registration.clickButtonEnter();
+        actualText = registration.clickButtonEnter();
+        assertEquals("Войти", actualText);
         actualText = basePageObject.checkActiveButtonPlaceAnOrder();
         assertEquals("Оформить заказ", actualText);
     }
@@ -69,11 +74,17 @@ public class EnterPersonalCabinetTest {
     @DisplayName("Вход в ЛК через кнопку Личный кабинет")
     public void enterThroughButtonPersonalCabinet() {
         BasePageObject basePageObject = new BasePageObject(driver);
-        basePageObject.ckickLoginButton();
+        actualText = basePageObject.checkTextButtonEnterInAccaunt();
+        assertEquals("Войти в аккаунт", actualText);
+        actualText = basePageObject.ckickLoginButton();
+        assertEquals("Личный Кабинет", actualText);
         Registration registration = new Registration(driver);
+        actualText = registration.checkHeaderText();
+        assertEquals("Вход", actualText);
         registration.enterFieldEmail(user);
         registration.enterPassword(user);
-        registration.clickButtonEnter();
+        actualText = registration.clickButtonEnter();
+        assertEquals("Войти", actualText);
         actualText = basePageObject.checkActiveButtonPlaceAnOrder();
         assertEquals("Оформить заказ", actualText);
     }
@@ -82,18 +93,51 @@ public class EnterPersonalCabinetTest {
     @DisplayName("Вход в ЛК по кнопке на странице регистрации")
     public void enterFromButtonInRegistrationPage() {
         BasePageObject basePageObject = new BasePageObject(driver);
-        basePageObject.ckickLoginButton();
+        actualText = basePageObject.checkTextButtonEnterInAccaunt();
+        assertEquals("Войти в аккаунт", actualText);
+        actualText = basePageObject.ckickLoginButton();
+        assertEquals("Личный Кабинет", actualText);
         Registration registration = new Registration(driver);
+        actualText = registration.checkHeaderText();
+        assertEquals("Вход", actualText);
         registration.clickLinkRegistration();
-        registration.ckickButtonEnterFromRegistrationPage();
+        actualText = registration.ckickButtonEnterFromRegistrationPage();
+        assertEquals("Войти", actualText);
         registration.enterFieldEmail(user);
         registration.enterPassword(user);
-        registration.clickButtonEnter();
+        actualText = registration.clickButtonEnter();
+        assertEquals("Войти", actualText);
         actualText = basePageObject.checkActiveButtonPlaceAnOrder();
         assertEquals("Оформить заказ", actualText);
     }
 
-
+    @Test
+    @DisplayName("Вход через кнопку на странице восстановления пароля")
+    public void enterFromPagePasswordEecovery() {
+        BasePageObject basePageObject = new BasePageObject(driver);
+        actualText = basePageObject.checkTextButtonEnterInAccaunt();
+        assertEquals("Войти в аккаунт", actualText);
+        actualText = basePageObject.ckickLoginButton();
+        assertEquals("Личный Кабинет", actualText);
+        Registration registration = new Registration(driver);
+        actualText = registration.checkHeaderText();
+        assertEquals("Вход", actualText);
+        actualText = registration.clickAndCheckLinkRecoverThePassword();
+        assertEquals("Восстановить пароль", actualText);
+        PasswordRecovery passwordRecovery = new PasswordRecovery(driver);
+        actualText = passwordRecovery.checkHeader();
+        assertEquals("Восстановление пароля", actualText);
+        actualText = passwordRecovery.clickAndCheckLinkEnter();
+        assertEquals("Войти", actualText);
+        actualText = registration.checkHeaderText();
+        assertEquals("Вход", actualText);
+        registration.enterFieldEmail(user);
+        registration.enterPassword(user);
+        actualText = registration.clickButtonEnter();
+        assertEquals("Войти", actualText);
+        actualText = basePageObject.checkActiveButtonPlaceAnOrder();
+        assertEquals("Оформить заказ", actualText);
+    }
 
     @After
     public void deleteUserAndQuitDriver() {
