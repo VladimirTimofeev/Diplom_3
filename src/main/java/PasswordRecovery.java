@@ -10,8 +10,6 @@ public class PasswordRecovery {
 
     private final WebDriver driver;
 
-    private String actualText;
-
     //Заголовок
     private final By headerText = By.xpath("//*[@id=\"root\"]/div/main/div/h2");
     //Ссылка Войти

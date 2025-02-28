@@ -1,14 +1,11 @@
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import static org.junit.Assert.assertEquals;
 
 
 public class RegistrationTest {
@@ -21,7 +18,6 @@ public class RegistrationTest {
     private CheckStatusCode checkStatusCode = new CheckStatusCode();
     private CheckBodyResponse checkBodyResponse = new CheckBodyResponse();
     private String accessToken;
-    private String actualText;
 
     User user = UserData.expectedCreateUser();
 
@@ -45,17 +41,10 @@ public class RegistrationTest {
         checkBodyResponse.checkMessageDeleteUser(response);
     }
 
-//    @Before
-//    public void prepare() {
-//        driver = new ChromeDriver();
-//        driver.manage().window().maximize();
-//    }
-
     @Before
     @Description("Configuring the driver and base URL for tests")
     @DisplayName("Setting up the test environment")
     public void setUp() {
-//        RestAssured.baseURI = "https://stellarburgers.nomoreparties.site";
         driver = BrowserChoose.createDriver();
         driver.get("https://stellarburgers.nomoreparties.site/");
     }

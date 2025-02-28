@@ -91,5 +91,4 @@ public class Constructor {
         waitElement(breadScrollMenu);
         assertEquals(bread, driver.findElement(breadScrollMenu).getText());
     }
-
 }
