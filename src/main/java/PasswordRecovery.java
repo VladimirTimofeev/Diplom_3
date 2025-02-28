@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import static org.junit.Assert.assertEquals;
 
 import java.time.Duration;
 
@@ -27,17 +28,16 @@ public class PasswordRecovery {
                 .until(ExpectedConditions.visibilityOfElementLocated(element));
     }
 
-    //Проверка заголовка
-    public String checkHeader() {
+    //Проверка текста заголовка Восстановление пароля
+    public void checkHeader() {
         waitElementLocated(headerText);
-        return driver.findElement(headerText).getText();
+        assertEquals("Восстановление пароля", driver.findElement(headerText).getText());
     }
 
-    //Проверка и нажатие ссылки Войти
-    public String clickAndCheckLinkEnter() {
+    //Проверка текста и нажатие ссылки Войти
+    public void clickAndCheckLinkEnter() {
         waitElementLocated(linkEnter);
-        actualText = driver.findElement(linkEnter).getText();
+        assertEquals("Войти", driver.findElement(linkEnter).getText());
         driver.findElement(linkEnter).click();
-        return actualText;
     }
 }

@@ -2,14 +2,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import static org.junit.Assert.assertEquals;
 
 import java.time.Duration;
 
 public class Registration {
 
     private final WebDriver driver;
-
-    private String actualText;
 
     //Ссылка Зарегистрироваться
     private final By linkRegistration = By.xpath(".//a[text()='Зарегистрироваться']");
@@ -25,6 +24,8 @@ public class Registration {
     private final By passswordField = By.xpath(".//input[@name='Пароль']");
     //Кнопка Зарегистрироваться
     private final By buttonRegistration = By.xpath("//button[text()='Зарегистрироваться']");
+    //Заголовок Регистрация
+    private final By headerRegistration = By.xpath(".//h2[text()='Регистрация']");
     //Ошибка некорректного пароля
     private final By errorPassword = By.xpath(".//p[text()='Некорректный пароль']");
     //Кнопка войти
@@ -33,6 +34,10 @@ public class Registration {
     private final By heading = By.xpath("//*[@id=\"root\"]/div/main/div/h2");
     //Ссылка Восстановить пароль
     private final By linkRecoverThePassword = By.xpath(".//a[text()='Восстановить пароль']");
+    //Заголовоу Профиль
+    private final By headerProfile = By.xpath(".//a[text()='Профиль']");
+    //Кнопка выход
+    private final By buttonExit = By.xpath(".//button[text()='Выход']");
 
     public Registration(WebDriver driver) {
         this.driver = driver;
@@ -50,9 +55,10 @@ public class Registration {
                 .until(ExpectedConditions.visibilityOfElementLocated(element));
     }
 
-    //Нажатие на сссылку Зарегистрироваться
+    //Нажатие и проверка текста ссылки Зарегистрироваться
     public void clickLinkRegistration() {
         waitElementClicable(linkRegistration);
+        assertEquals("Зарегистрироваться", driver.findElement(linkRegistration).getText());
         driver.findElement(linkRegistration).click();
     }
 
@@ -84,48 +90,62 @@ public class Registration {
         driver.findElement(passswordField).sendKeys(user.getPassword());
     }
 
-    //Нажате на кнопку Зарегистрироваться
-    public String clickButtonRegistration() {
+    //Нажате на кнопку Зарегистрироваться и проверка текста кнопки
+    public void clickButtonRegistration() {
         waitElementLocated(buttonRegistration);
-        String actualText = driver.findElement(buttonRegistration).getText();
+        assertEquals("Зарегистрироваться", driver.findElement(buttonRegistration).getText());
         driver.findElement(buttonRegistration).click();
-        return actualText;
+    }
+
+    //Проверка текста заголовка Регистрация
+    public void checkHeaderRegistration() {
+        waitElementLocated(headerRegistration);
+        assertEquals("Регистрация", driver.findElement(headerRegistration).getText());
     }
 
     //Проверка текста ошибки некорректного пароля
-    public String chechTextErrorPassword() {
+    public void chechTextErrorPassword() {
         waitElementLocated(errorPassword);
-        String actualText = driver.findElement(errorPassword).getText();
-        return actualText;
+        assertEquals("Некорректный пароль", driver.findElement(errorPassword).getText());
     }
 
-    //Нажатие кнопки Войти
-    public String clickButtonEnter() {
+    //Нажатие кнопки Войти и проверка текста кнопки
+    public void clickButtonEnter() {
         waitElementLocated(buttonEnter);
-        actualText = driver.findElement(buttonEnter).getText();
+        assertEquals("Войти", driver.findElement(buttonEnter).getText());
         driver.findElement(buttonEnter).click();
-        return actualText;
     }
 
-    //Нажатие на кнопку Вход на странице регистрации
-    public String ckickButtonEnterFromRegistrationPage() {
+    //Нажатие и проверка текста на кнопке Вход на странице регистрации
+    public void ckickButtonEnterFromRegistrationPage() {
         waitElementClicable(linkEnter);
-        actualText = driver.findElement(linkEnter).getText();
+        assertEquals("Войти", driver.findElement(linkEnter).getText());
         driver.findElement(linkEnter).click();
-        return actualText;
     }
 
     //Получение текста заголовка Вход
-    public String checkHeaderText() {
+    public void checkHeaderTextEnter() {
         waitElementLocated(heading);
-        return driver.findElement(heading).getText();
+        assertEquals("Вход", driver.findElement(heading).getText());
     }
 
-    //Проверка и нажатие ссылки Восстановление пароля
-    public String clickAndCheckLinkRecoverThePassword() {
+    //Нажатие ссылки Восстановление пароля и проверка текста кнопки
+    public void clickAndCheckLinkRecoverThePassword() {
         waitElementLocated(linkRecoverThePassword);
-        String actualText = driver.findElement(linkRecoverThePassword).getText();
+        assertEquals("Восстановить пароль", driver.findElement(linkRecoverThePassword).getText());
         driver.findElement(linkRecoverThePassword).click();
-        return actualText;
+    }
+
+    //Проверка текста заголовка Профиль
+    public void checkHeaderProfile() {
+        waitElementLocated(headerProfile);
+        assertEquals("Профиль", driver.findElement(headerProfile).getText());
+    }
+
+    //Нажатие на кнопку Выход и проверка текста кнопки
+    public void clickButtonExitAndCheckText() {
+        waitElementLocated(buttonExit);
+        assertEquals("Выход", driver.findElement(buttonExit).getText());
+        driver.findElement(buttonExit).click();
     }
 }

@@ -52,19 +52,15 @@ public class RegistrationTest {
     @Test
     public void registration() {
         BasePageObject basePageObject = new BasePageObject(driver);
-        actualText = basePageObject.checkTextButtonEnterInAccaunt();
-        assertEquals("Войти в аккаунт", actualText);
-        actualText = basePageObject.ckickLoginButton();
-        assertEquals("Личный Кабинет", actualText);
+        basePageObject.checkTextButtonEnterInAccaunt();
+        basePageObject.ckickLoginButton();
         Registration registration = new Registration(driver);
-        actualText = registration.checkHeaderText();
-        assertEquals("Вход", actualText);
+        registration.checkHeaderTextEnter();
         registration.clickLinkRegistration();
         registration.enterFieldName(user);
         registration.enterRegistrationFieldEmail(user);
         registration.enterPassword(user);
-        actualText = registration.clickButtonRegistration();
-        assertEquals("Зарегистрироваться", actualText);
+        registration.clickButtonRegistration();
     }
 
     @After
