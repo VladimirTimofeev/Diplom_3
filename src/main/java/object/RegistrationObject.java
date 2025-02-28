@@ -1,3 +1,5 @@
+package object;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -6,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.time.Duration;
 
-public class Registration {
+public class RegistrationObject {
 
     private final WebDriver driver;
 
@@ -39,7 +41,7 @@ public class Registration {
     //Кнопка выход
     private final By buttonExit = By.xpath(".//button[text()='Выход']");
 
-    public Registration(WebDriver driver) {
+    public RegistrationObject(WebDriver driver) {
         this.driver = driver;
     }
 

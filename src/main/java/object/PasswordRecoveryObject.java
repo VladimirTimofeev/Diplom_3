@@ -1,3 +1,5 @@
+package object;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -6,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.time.Duration;
 
-public class PasswordRecovery {
+public class PasswordRecoveryObject {
 
     private final WebDriver driver;
 
@@ -16,7 +18,7 @@ public class PasswordRecovery {
     private final By linkEnter = By.xpath(".//a[text()='Войти']");
 
 
-    public PasswordRecovery(WebDriver driver) {
+    public PasswordRecoveryObject(WebDriver driver) {
         this.driver = driver;
     }
 

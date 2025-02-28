@@ -1,3 +1,5 @@
+import object.User;
+
 public class UserData {
 
     public static User expectedCreateUser() {

@@ -1,6 +1,7 @@
 import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
+import object.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,11 +44,11 @@ public class EnterPersonalCabinetTest {
         BasePageObject basePageObject = new BasePageObject(driver);
         basePageObject.checkTextButtonEnterInAccaunt();
         basePageObject.ckickButtonPersonalCabinet();
-        Registration registration = new Registration(driver);
-        registration.checkHeaderTextEnter();
-        registration.enterFieldEmail(user);
-        registration.enterPassword(user);
-        registration.clickButtonEnter();
+        RegistrationObject registrationObject = new RegistrationObject(driver);
+        registrationObject.checkHeaderTextEnter();
+        registrationObject.enterFieldEmail(user);
+        registrationObject.enterPassword(user);
+        registrationObject.clickButtonEnter();
         basePageObject.CheckActiveButtonPlaceAnOrder();
     }
 
@@ -74,11 +75,11 @@ public class EnterPersonalCabinetTest {
         BasePageObject basePageObject = new BasePageObject(driver);
         basePageObject.checkTextButtonEnterInAccaunt();
         basePageObject.ckickLoginButton();
-        Registration registration = new Registration(driver);
-        registration.checkHeaderTextEnter();
-        registration.enterFieldEmail(user);
-        registration.enterPassword(user);
-        registration.clickButtonEnter();
+        RegistrationObject registrationObject = new RegistrationObject(driver);
+        registrationObject.checkHeaderTextEnter();
+        registrationObject.enterFieldEmail(user);
+        registrationObject.enterPassword(user);
+        registrationObject.clickButtonEnter();
         basePageObject.CheckActiveButtonPlaceAnOrder();
     }
 
@@ -88,14 +89,14 @@ public class EnterPersonalCabinetTest {
         BasePageObject basePageObject = new BasePageObject(driver);
         basePageObject.checkTextButtonEnterInAccaunt();
         basePageObject.ckickLoginButton();
-        Registration registration = new Registration(driver);
-        registration.checkHeaderTextEnter();
-        registration.clickLinkRegistration();
-        registration.checkHeaderRegistration();
-        registration.ckickButtonEnterFromRegistrationPage();
-        registration.enterFieldEmail(user);
-        registration.enterPassword(user);
-        registration.clickButtonEnter();
+        RegistrationObject registrationObject = new RegistrationObject(driver);
+        registrationObject.checkHeaderTextEnter();
+        registrationObject.clickLinkRegistration();
+        registrationObject.checkHeaderRegistration();
+        registrationObject.ckickButtonEnterFromRegistrationPage();
+        registrationObject.enterFieldEmail(user);
+        registrationObject.enterPassword(user);
+        registrationObject.clickButtonEnter();
         basePageObject.CheckActiveButtonPlaceAnOrder();
     }
 
@@ -105,16 +106,16 @@ public class EnterPersonalCabinetTest {
         BasePageObject basePageObject = new BasePageObject(driver);
         basePageObject.checkTextButtonEnterInAccaunt();
         basePageObject.ckickLoginButton();
-        Registration registration = new Registration(driver);
-        registration.checkHeaderTextEnter();
-        registration.clickAndCheckLinkRecoverThePassword();
-        PasswordRecovery passwordRecovery = new PasswordRecovery(driver);
-        passwordRecovery.checkHeader();
-        passwordRecovery.clickAndCheckLinkEnter();
-        registration.checkHeaderTextEnter();
-        registration.enterFieldEmail(user);
-        registration.enterPassword(user);
-        registration.clickButtonEnter();
+        RegistrationObject registrationObject = new RegistrationObject(driver);
+        registrationObject.checkHeaderTextEnter();
+        registrationObject.clickAndCheckLinkRecoverThePassword();
+        PasswordRecoveryObject passwordRecoveryObject = new PasswordRecoveryObject(driver);
+        passwordRecoveryObject.checkHeader();
+        passwordRecoveryObject.clickAndCheckLinkEnter();
+        registrationObject.checkHeaderTextEnter();
+        registrationObject.enterFieldEmail(user);
+        registrationObject.enterPassword(user);
+        registrationObject.clickButtonEnter();
         basePageObject.clickAndCheckActiveButtonPlaceAnOrder();
     }
 
@@ -124,11 +125,11 @@ public class EnterPersonalCabinetTest {
         BasePageObject basePageObject = new BasePageObject(driver);
         basePageObject.checkTextButtonEnterInAccaunt();
         basePageObject.ckickLoginButton();
-        Registration registration = new Registration(driver);
-        registration.checkHeaderTextEnter();
-        registration.enterFieldEmail(user);
-        registration.enterPassword(user);
-        registration.clickButtonEnter();
+        RegistrationObject registrationObject = new RegistrationObject(driver);
+        registrationObject.checkHeaderTextEnter();
+        registrationObject.enterFieldEmail(user);
+        registrationObject.enterPassword(user);
+        registrationObject.clickButtonEnter();
         basePageObject.clickAndCheckButtonConstructor();
         basePageObject.checkHeaderAssembleBurger();
     }
@@ -139,10 +140,10 @@ public class EnterPersonalCabinetTest {
         BasePageObject basePageObject = new BasePageObject(driver);
         basePageObject.checkTextButtonEnterInAccaunt();
         basePageObject.ckickLoginButton();
-        Registration registration = new Registration(driver);
-        registration.checkHeaderTextEnter();
-        registration.enterFieldEmail(user);
-        registration.enterPassword(user);
+        RegistrationObject registrationObject = new RegistrationObject(driver);
+        registrationObject.checkHeaderTextEnter();
+        registrationObject.enterFieldEmail(user);
+        registrationObject.enterPassword(user);
         basePageObject.clickOnLogo();
         basePageObject.checkHeaderAssembleBurger();
     }
@@ -153,16 +154,16 @@ public class EnterPersonalCabinetTest {
         BasePageObject basePageObject = new BasePageObject(driver);
         basePageObject.checkTextButtonEnterInAccaunt();
         basePageObject.ckickButtonPersonalCabinet();
-        Registration registration = new Registration(driver);
-        registration.checkHeaderTextEnter();
-        registration.enterFieldEmail(user);
-        registration.enterPassword(user);
-        registration.clickButtonEnter();
+        RegistrationObject registrationObject = new RegistrationObject(driver);
+        registrationObject.checkHeaderTextEnter();
+        registrationObject.enterFieldEmail(user);
+        registrationObject.enterPassword(user);
+        registrationObject.clickButtonEnter();
         basePageObject.CheckActiveButtonPlaceAnOrder();
         basePageObject.ckickLoginButton();
-        registration.checkHeaderProfile();
-        registration.clickButtonExitAndCheckText();
-        registration.checkHeaderTextEnter();
+        registrationObject.checkHeaderProfile();
+        registrationObject.clickButtonExitAndCheckText();
+        registrationObject.checkHeaderTextEnter();
     }
 
     @Test
@@ -170,22 +171,22 @@ public class EnterPersonalCabinetTest {
     public void checkItemsMenu() {
         loginFromBasePage();
         BasePageObject basePageObject = new BasePageObject(driver);
-        Constructor constructor = new Constructor(driver);
-        actualText = constructor.selectedSauceElement();
-        constructor.checkSauceScrollMenu();
-        constructor.selectedActiveElement(actualText);
-        actualText = constructor.selectedToppingsElement();
-        constructor.checkToppingScrollMenu();
+        ConstructorObject constructorObject = new ConstructorObject(driver);
+        actualText = constructorObject.selectedSauceElement();
+        constructorObject.checkSauceScrollMenu();
+        constructorObject.selectedActiveElement(actualText);
+        actualText = constructorObject.selectedToppingsElement();
+        constructorObject.checkToppingScrollMenu();
         basePageObject.checkHeaderAssembleBurger();
-        constructor.selectedActiveElement(actualText);
-        actualText = constructor.selectedSauceElement();
-        constructor.checkSauceScrollMenu();
+        constructorObject.selectedActiveElement(actualText);
+        actualText = constructorObject.selectedSauceElement();
+        constructorObject.checkSauceScrollMenu();
         basePageObject.checkHeaderAssembleBurger();
-        constructor.selectedActiveElement(actualText);
-        actualText = constructor.selectedBreadElement();
-        constructor.checkBreadScrollMenu();
+        constructorObject.selectedActiveElement(actualText);
+        actualText = constructorObject.selectedBreadElement();
+        constructorObject.checkBreadScrollMenu();
         basePageObject.checkHeaderAssembleBurger();
-        constructor.selectedActiveElement(actualText);
+        constructorObject.selectedActiveElement(actualText);
     }
 
     @After

@@ -2,13 +2,16 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
+import object.BasePageObject;
+import object.RegistrationObject;
+import object.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
 
-public class RegistrationTest {
+public class RegistrationObjectTest {
 
     private WebDriver driver;
 
@@ -54,13 +57,13 @@ public class RegistrationTest {
         BasePageObject basePageObject = new BasePageObject(driver);
         basePageObject.checkTextButtonEnterInAccaunt();
         basePageObject.ckickLoginButton();
-        Registration registration = new Registration(driver);
-        registration.checkHeaderTextEnter();
-        registration.clickLinkRegistration();
-        registration.enterFieldName(user);
-        registration.enterRegistrationFieldEmail(user);
-        registration.enterPassword(user);
-        registration.clickButtonRegistration();
+        RegistrationObject registrationObject = new RegistrationObject(driver);
+        registrationObject.checkHeaderTextEnter();
+        registrationObject.clickLinkRegistration();
+        registrationObject.enterFieldName(user);
+        registrationObject.enterRegistrationFieldEmail(user);
+        registrationObject.enterPassword(user);
+        registrationObject.clickButtonRegistration();
     }
 
     @After

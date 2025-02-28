@@ -1,4 +1,8 @@
 import io.qameta.allure.junit4.DisplayName;
+import object.BasePageObject;
+import object.ConstructorObject;
+import object.RegistrationObject;
+import object.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,14 +27,14 @@ public class WithoutAuthorizationTest {
         BasePageObject basePageObject = new BasePageObject(driver);
         basePageObject.checkTextButtonEnterInAccaunt();
         basePageObject.ckickLoginButton();
-        Registration registration = new Registration(driver);
-        registration.checkHeaderTextEnter();
-        registration.clickLinkRegistration();
-        registration.enterFieldName(user);
-        registration.enterRegistrationFieldEmail(user);
-        registration.enterPassword(user);
-        registration.clickButtonRegistration();
-        registration.chechTextErrorPassword();
+        RegistrationObject registrationObject = new RegistrationObject(driver);
+        registrationObject.checkHeaderTextEnter();
+        registrationObject.clickLinkRegistration();
+        registrationObject.enterFieldName(user);
+        registrationObject.enterRegistrationFieldEmail(user);
+        registrationObject.enterPassword(user);
+        registrationObject.clickButtonRegistration();
+        registrationObject.chechTextErrorPassword();
     }
 
     @Test
@@ -39,8 +43,8 @@ public class WithoutAuthorizationTest {
         BasePageObject basePageObject = new BasePageObject(driver);
         basePageObject.checkTextButtonEnterInAccaunt();
         basePageObject.ckickLoginButton();
-        Registration registration = new Registration(driver);
-        registration.checkHeaderTextEnter();
+        RegistrationObject registrationObject = new RegistrationObject(driver);
+        registrationObject.checkHeaderTextEnter();
         basePageObject.clickAndCheckButtonConstructor();
         basePageObject.checkHeaderAssembleBurger();
     }
@@ -51,8 +55,8 @@ public class WithoutAuthorizationTest {
         BasePageObject basePageObject = new BasePageObject(driver);
         basePageObject.checkTextButtonEnterInAccaunt();
         basePageObject.ckickLoginButton();
-        Registration registration = new Registration(driver);
-        registration.checkHeaderTextEnter();
+        RegistrationObject registrationObject = new RegistrationObject(driver);
+        registrationObject.checkHeaderTextEnter();
         basePageObject.clickOnLogo();
         basePageObject.checkHeaderAssembleBurger();
     }
@@ -62,22 +66,22 @@ public class WithoutAuthorizationTest {
     public void checkItemsMenu() {
         BasePageObject basePageObject = new BasePageObject(driver);
         basePageObject.checkTextButtonEnterInAccaunt();
-        Constructor constructor = new Constructor(driver);
-        actualText = constructor.selectedSauceElement();
-        constructor.checkSauceScrollMenu();
-        constructor.selectedActiveElement(actualText);
-        actualText = constructor.selectedToppingsElement();
-        constructor.checkToppingScrollMenu();
+        ConstructorObject constructorObject = new ConstructorObject(driver);
+        actualText = constructorObject.selectedSauceElement();
+        constructorObject.checkSauceScrollMenu();
+        constructorObject.selectedActiveElement(actualText);
+        actualText = constructorObject.selectedToppingsElement();
+        constructorObject.checkToppingScrollMenu();
         basePageObject.checkHeaderAssembleBurger();
-        constructor.selectedActiveElement(actualText);
-        actualText = constructor.selectedSauceElement();
-        constructor.checkSauceScrollMenu();
+        constructorObject.selectedActiveElement(actualText);
+        actualText = constructorObject.selectedSauceElement();
+        constructorObject.checkSauceScrollMenu();
         basePageObject.checkHeaderAssembleBurger();
-        constructor.selectedActiveElement(actualText);
-        actualText = constructor.selectedBreadElement();
-        constructor.checkBreadScrollMenu();
+        constructorObject.selectedActiveElement(actualText);
+        actualText = constructorObject.selectedBreadElement();
+        constructorObject.checkBreadScrollMenu();
         basePageObject.checkHeaderAssembleBurger();
-        constructor.selectedActiveElement(actualText);
+        constructorObject.selectedActiveElement(actualText);
     }
 
     @After

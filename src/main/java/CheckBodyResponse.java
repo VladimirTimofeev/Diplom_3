@@ -1,4 +1,5 @@
 import io.restassured.response.Response;
+import object.User;
 
 import static org.hamcrest.Matchers.equalTo;
 

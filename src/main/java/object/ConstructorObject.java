@@ -1,3 +1,5 @@
+package object;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -6,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.time.Duration;
 
-public class Constructor {
+public class ConstructorObject {
 
     private WebDriver driver;
 
@@ -33,7 +35,7 @@ public class Constructor {
     //Название пункта меню Начинки
     private final String toppings = "Начинки";
 
-    public Constructor(WebDriver driver) {
+    public ConstructorObject(WebDriver driver) {
         this.driver = driver;
     }
 
