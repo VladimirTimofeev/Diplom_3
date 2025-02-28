@@ -1,12 +1,12 @@
 import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import static org.junit.Assert.assertEquals;
 
 public class EnterPersonalCabinetTest {
 
@@ -60,8 +60,7 @@ public class EnterPersonalCabinetTest {
         checkBodyResponse.checkBodyTegSuccessTrue(response);
         checkBodyResponse.checkBodyUserEmail(response, user);
         checkBodyResponse.checkBoduUserName(response, user);
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        driver = BrowserChoose.createDriver();
         driver.get("https://stellarburgers.nomoreparties.site/");
     }
 

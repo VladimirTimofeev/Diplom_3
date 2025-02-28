@@ -1,4 +1,7 @@
+import io.qameta.allure.Description;
 import io.qameta.allure.Step;
+import io.qameta.allure.junit4.DisplayName;
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
@@ -42,10 +45,18 @@ public class RegistrationTest {
         checkBodyResponse.checkMessageDeleteUser(response);
     }
 
+//    @Before
+//    public void prepare() {
+//        driver = new ChromeDriver();
+//        driver.manage().window().maximize();
+//    }
+
     @Before
-    public void prepare() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+    @Description("Configuring the driver and base URL for tests")
+    @DisplayName("Setting up the test environment")
+    public void setUp() {
+//        RestAssured.baseURI = "https://stellarburgers.nomoreparties.site";
+        driver = BrowserChoose.createDriver();
         driver.get("https://stellarburgers.nomoreparties.site/");
     }
 

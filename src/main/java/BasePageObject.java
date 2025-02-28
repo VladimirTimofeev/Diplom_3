@@ -35,7 +35,7 @@ public class BasePageObject {
 
     //Ожидание появение элемента на странице
     public void waitElementLocated(By element) {
-        new WebDriverWait(driver, Duration.ofSeconds(5))
+        new WebDriverWait(driver, Duration.ofSeconds(25))
                 .until(ExpectedConditions.visibilityOfElementLocated(element));
     }
 

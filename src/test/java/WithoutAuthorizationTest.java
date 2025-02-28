@@ -1,4 +1,5 @@
 import io.qameta.allure.junit4.DisplayName;
+import io.restassured.RestAssured;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,8 +15,7 @@ public class WithoutAuthorizationTest {
 
     @Before
     public void prepare() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        driver = BrowserChoose.createDriver();
         driver.get("https://stellarburgers.nomoreparties.site/");
     }
 
