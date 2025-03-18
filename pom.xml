@@ -72,14 +72,8 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.13.2</version>
-      <scope>test</scope>
+      <scope>test, compile</scope>
     </dependency>
-    <dependency>
-    <groupId>junit</groupId>
-    <artifactId>junit</artifactId>
-    <version>4.13.2</version>
-    <scope>compile</scope>
-  </dependency>
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
@@ -95,12 +89,6 @@
       <groupId>com.google.code.gson</groupId>
       <artifactId>gson</artifactId>
       <version>2.10.1</version>
-    </dependency>
-    <dependency>
-      <!-- модуль взаимодействия Allure и Junit -->
-      <groupId>io.qameta.allure</groupId>
-      <artifactId>allure-junit4</artifactId>
-      <version>2.26.0</version>
     </dependency>
     <dependency>
       <!-- модуль взаимодействия Allure и RestAssured -->
