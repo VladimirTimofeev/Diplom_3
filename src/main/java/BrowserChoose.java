@@ -30,7 +30,6 @@ public class BrowserChoose {
     }
 
     private static void configureYandexDriver(ChromeOptions options) {
-//        System.setProperty("webdriver.chrome.driver", "C://WebDriver/Yandex/yandexdriver.exe");
         System.setProperty("webdriver.chrome.driver", "src/test/resources/yandexdriver.exe");
         options.setBinary("C:/Users/Общее/AppData/Local/Yandex/YandexBrowser/Application/browser.exe");
     }
